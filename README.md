@@ -1,43 +1,117 @@
-# Assignment-OCR
-Project Overview: Assignment-OCR
-The project, titled "Assignment-OCR," is a specialized application of Optical Character Recognition (OCR) technology, focusing on a critical and sensitive task: the automated extraction of Personal Identifiable Information (PII) from unstructured, handwritten documents.
+Assignment-OCR
 
-The core objective is to create a robust and functional pipeline that can successfully process challenging input (handwriting) and accurately identify and extract specific data points that qualify as PII (such as names, addresses, identification numbers, etc.).
+Automated pipeline for extracting Personal Identifiable Information (PII) from handwritten documents using OCR + post-processing + NLP techniques.
 
-#Key Project Aspects (In Points)
-1. Core Objective and Challenge
-Goal: To build an automated pipeline for PII Extraction from documents.
+📝 Project Overview
 
-Primary Challenge: Processing Handwritten Documents, which typically involves lower recognition accuracy and requires more sophisticated pre-processing compared to printed text.
+Many institutions and organizations still rely on scanned or handwritten documents for record-keeping. Manually extracting important data (names, addresses, ID numbers, etc.) from such documents is tedious and error-prone. Assignment-OCR aims to automate this task by building an end-to-end pipeline that:
 
-2. Technical Implementation
-Project Name: Assignment-OCR
+Accepts handwritten document images
 
-Programming Language: Primarily Python (95.6% of the codebase), suggesting the use of common libraries for image processing, OCR, and Natural Language Processing (NLP) or Named Entity Recognition (NER).
+Runs pre-processing + OCR to extract raw text
 
-Code Structure: The main implementation is organized within the ocr_pii_pipeline directory. This structure implies a modular approach, likely separating stages like image pre-processing, OCR, and PII identification.
+Cleans and normalizes the text
 
-3. Data and Inputs
-Input Data Type: Images of documents containing handwritten text.
+Identifies and extracts PII (names, dates, addresses, identification numbers, etc.)
 
-#Sample Files: The repository includes several sample image files (e.g., page_14.jpg, page_30.jpg), which serve as the test or demonstration data for the pipeline.
+Outputs cleaned structured data (e.g. JSON or CSV) for further processing
 
-Key Document: The file OCR Pipeline Assignment – Handwritten documnet PII Extraction.pdf is the project's definitive requirement and scope document, outlining the specific PII fields to be extracted and any required performance metrics.
+This helps in speeding up data entry, reducing human error, and making PII extraction scalable and reliable.
 
-4. The OCR Pipeline (Inferred Stages)
-The process likely involves the following sequential steps:
+🚀 Key Features
 
-Image Pre-processing: Cleaning up the handwritten image (e.g., de-skewing, noise reduction, binarization) to optimize it for OCR.
+❇️ Handwritten document support — not just typed or printed text.
 
-OCR Execution: Using an OCR engine (e.g., Tesseract, Google Vision API, etc.) to convert the processed image into raw text.
+🧹 Pre-processing of images — noise removal, normalization, binarization, etc. to improve OCR accuracy.
 
-Text Post-processing/Normalization: Cleaning up raw text output, handling OCR errors, and correcting common handwriting recognition mistakes.
+🔍 OCR + NLP / Named Entity Recognition (NER) — convert images to text, then parse and extract meaningful PII.
 
-PII Identification (NER): Applying advanced text analysis (likely using NLP/NER models) to scan the text and tag specific entities as PII (e.g., names, dates of birth, phone numbers).
+📄 Multiple sample inputs supported — test images available (like page_14.jpg, page_30.jpg, etc.) to demonstrate pipeline.
 
-Output Generation: Formatting the extracted PII into a structured output (e.g., JSON, CSV, database record) for downstream use.
+💾 Structured output — extracted PII is stored in a consistent, machine-readable format, usable for downstream tasks (database, CSV, etc.).
 
-#Detailed Project Description (In Paragraphs)
-The Assignment-OCR project addresses a practical need for automating data entry and compliance from physically written records. Its main focus is on creating an end-to-end pipeline capable of handling one of the most challenging data formats: human handwriting. This mandates the use of cutting-edge computer vision techniques to normalize the input images, thereby maximizing the accuracy of the subsequent OCR engine.
+📂 Project Structure
+assignment-ocr/
+│
+├── ocr_pii_pipeline/         # main code for processing, OCR, and PII extraction  
+├── sample_images/            # sample handwritten document images (e.g. page_14.jpg, page_30.jpg …)  
+├── README.md                 # this file  
+└── requirements.txt (or equivalent)  # dependencies  
 
-Once the handwritten text is digitized into a raw text string by the OCR component, the project shifts its focus to Personal Identifiable Information (PII) extraction. This step is crucial for sensitive data handling. The pipeline utilizes Python's extensive ecosystem, likely incorporating libraries like OpenCV for image manipulation and a robust NER framework (like spaCy or similar) to accurately locate and categorize various forms of PII. The success of this project is measured not just by the OCR's ability to read the handwriting, but by the pipeline's overall precision and recall in isolating the target PII, a process housed primarily within the ocr_pii_pipeline codebase.
+
+Note: Adjust paths/names depending on your actual folder-naming.
+
+💻 Technology & Dependencies
+
+Language: Python (majority of codebase)
+
+Main dependencies likely include: image processing (e.g. OpenCV or PIL), OCR engine (e.g. Tesseract or similar), NLP / NER libraries (e.g. spaCy, NLTK, or any other)
+
+(Optional) Any additional packages for file I/O, data export (JSON/CSV), logging, etc.
+
+(You should list exact versions/dependencies in requirements.txt or in this section later.)
+
+📥 Installation & Usage
+
+Below is a sample usage flow. Adjust based on your actual code.
+
+# 1. Clone the repo  
+git clone https://github.com/your-username/Assignment-OCR.git  
+cd Assignment-OCR  
+
+# 2. (Optional) create and activate virtual environment  
+python3 -m venv venv  
+source venv/bin/activate   # or `venv\Scripts\activate` on Windows  
+
+# 3. Install dependencies  
+pip install -r requirements.txt  
+
+# 4. Run the OCR + PII extraction pipeline on a sample image  
+python ocr_pii_pipeline/main.py --input sample_images/page_14.jpg --output output.json  
+
+
+(Modify command-line or config usage based on your actual script parameters.)
+
+🧪 Example / Demo
+
+You may include a small demo using one of the sample images, showing before (handwritten image) → after (structured JSON/CSV output).
+
+For example:
+
+Input: sample_images/page_14.jpg (a handwritten application form)
+
+Output: {"Name": "John Doe", "DateOfBirth": "01-01-1980", "Address": "...", "ID": "ABC12345"}
+
+This showcases medium-to-high accuracy of OCR + PII extraction (depending on handwriting quality).
+
+✅ When to Use This / Use-Cases
+
+Digitizing handwritten records (forms, application sheets, handwritten surveys)
+
+Automating data-entry from hard-copies
+
+Pre-processing for data migration from scanned documents
+
+Sensitive document data extraction (with care for privacy and security)
+
+❗ Known Limitations & Challenges
+
+Handwriting recognition is inherently error-prone — output quality depends heavily on image quality and clarity of handwriting.
+
+OCR + NER errors — mis-recognition or mis-classification of entities may occur.
+
+Not ideal for very messy or stylized handwriting.
+
+PII extraction may require further manual validation for high-stakes use cases (legal, compliance, etc.).
+
+📈 Future Improvements / TODOs
+
+Improve image pre-processing (deskewing, contrast enhancement) to handle noisy images.
+
+Support batch processing of multiple documents.
+
+Add confidence scoring for extracted data.
+
+Integrate human-in-the-loop validation for high-risk PII extraction.
+
+Optionally, wrap pipeline into a web/API service for easier consumption.
