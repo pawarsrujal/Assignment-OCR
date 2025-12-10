@@ -1,0 +1,58 @@
+# Complete OCR + PII Extraction Pipeline - Dependencies
+# Installation: pip install -r requirements_complete.txt
+
+# ===== Core Image Processing =====
+opencv-python==4.11.0.86
+numpy==2.2.2
+Pillow==11.1.0
+scipy==1.14.1
+
+# ===== OCR Engines =====
+pytesseract==0.3.13
+easyocr==1.7.2
+
+# ===== Deep Learning (for EasyOCR) =====
+torch==2.5.1
+torchvision==0.20.1
+
+# ===== NER and PII Detection =====
+spacy==3.8.3
+presidio-analyzer==2.2.358
+presidio-anonymizer==2.2.358
+
+# ===== Text Processing =====
+nltk==3.9.1
+python-dateutil==2.9.0.post0
+regex==2024.11.6
+rapidfuzz==3.14.3
+
+# ===== Utilities =====
+pandas==2.2.3
+matplotlib==3.10.0
+
+# ===== Web Application (Streamlit) =====
+streamlit==1.41.1
+
+# ===== Additional Tools =====
+jupyter==1.1.1
+notebook==7.3.2
+
+# ===== System Requirements =====
+# 
+# 1. Install Tesseract OCR:
+#    - Windows: https://github.com/UB-Mannheim/tesseract/wiki
+#    - Ubuntu/Debian: sudo apt-get install tesseract-ocr tesseract-ocr-eng
+#    - macOS: brew install tesseract
+#
+# 2. Download spaCy model:
+#    python -m spacy download en_core_web_sm
+#
+# 3. Download NLTK data (optional):
+#    python -c "import nltk; nltk.download('punkt'); nltk.download('stopwords')"
+#
+# ===== Performance Notes =====
+#
+# - EasyOCR downloads models on first run (~100MB)
+# - GPU support: Install torch with CUDA for faster processing
+# - Memory: ~2GB RAM recommended for processing medical documents
+# - Processing time: 3-5 seconds per image (CPU), <1 second (GPU)
